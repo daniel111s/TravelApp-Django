@@ -1,0 +1,31 @@
+.travel-list {
+            display: flex; /* Ustawienie na flex container */
+            flex-direction: column; /* Ustawienie kierunku flex na kolumnę */
+            align-items: center; /* Wyśrodkowanie zawartości w osi poziomej (środek nagłówka) */
+            background-color: #f0f0f0; /* Kolor tła */
+            padding: 10px; /* Wewnętrzny odstęp */
+            border: 1px solid #ccc; /* Ramka */
+            border-radius: 5px; /* Zaokrąglenie rogów */
+        }
+
+        /* Style dla pojedynczego wpisu podróży */
+        .travel-item {
+            display: flex; /* Ustawienie na flex container */
+            justify-content: space-between; /* Rozłożenie elementów podróży na całej szerokości */
+            margin-bottom: 10px; /* Odstęp między wpisami */
+            border: 1px solid #ddd; /* Ramka pojedynczego wpisu */
+            padding: 10px; /* Wewnętrzny odstęp pojedynczego wpisu */
+            border-radius: 5px; /* Zaokrąglenie rogów pojedynczego wpisu */
+            width: 50%; /* 50 % Pełnej szerokość podróży */
+            align-items: center; /* Wyśrodkowanie zawartości w osi poziomej (środek tekstu i obrazu) */
+            box-shadow: 0px 0px 5px 0px #ccc; /* Cień dla podróży */
+        }
+
+        /* Style dla obrazu miasta */
+        .city-image {
+            width: 300px; /* Szerokość obrazu */
+            height: 200px; /* Wysokość obrazu */
+            margin-left: 10px; /* Margines po lewej stronie obrazu */
+            border-radius: 5px; /* Zaokrąglenie rogów obrazu */
+        }
+

@@ -1,0 +1,124 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Travel</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background: url('{% static "city_images/Other/home_page.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+        }
+        h1, .navbar-brand, .nav-link {
+            font-family: 'Playfair Display', serif; /* Secondary font for headers */
+        }
+        .navbar {
+            background-color: transparent;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            background-color: #fdfdfd; /* Light background for cards */
+            border-radius: 10px; /* Rounded corners for cards */
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            transform: scale(1.04);
+        }
+        .btn-custom {
+            background-color: #746855; /* Complementary dark color */
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #5a4c3c; /* Slightly darker for hover */
+            color: white;
+        }
+        /* Animation */
+        .animate__animated.animate__fadeIn {
+            --animate-duration: 0.8s;
+            animation-duration: 0.8s;
+        }
+    </style>
+</head>
+<body>
+    <!-- NavBar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        {% if user.is_authenticated %}
+        <a class="navbar-brand" href="#">{{ user.username }}</a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'home_page' %}" class="btn btn-custom btn-sm">Home</a>
+                    <a href="{% url 'travel_list' %}" class="btn btn-custom btn-sm">Go Back</a>
+                    <a href="{% url 'logout' %}" class="btn btn-custom btn-sm">Logout</a>
+                    {% else %}
+                    <a href="{% url 'home_page' %}" class="btn btn-custom btn-sm">Home</a>
+                    <a href="{% url 'travel_list' %}" class="btn btn-custom btn-sm">Go Back</a>
+                    <a href="{% url 'login' %}" class="btn btn-custom btn-sm">Login</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-container animate__animated animate__fadeIn">
+                <h2 class="text-center">Edit Travel</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-control" id="{{ field.id_for_label }}" value="{{ field.value|default_if_none:'' }}">
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-custom btn-sm">Edit</button>
+                    <a href="{% url 'travel_list' %}" class="btn btn-custom btn-sm">Go back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Animation on Scroll (AOS) library -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

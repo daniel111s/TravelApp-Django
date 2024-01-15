@@ -1,0 +1,169 @@
+{#{% load static %}#}
+{#<!doctype html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport"#}
+{#          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
+{#    <meta http-equiv="X-UA-Compatible" content="ie=edge">#}
+{#    <title>TravelApp - Explore the World</title>#}
+{#    <!-- Bootstrap CSS -->#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <!-- Google Fonts -->#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">#}
+{#    <!-- Custom CSS -->#}
+{#    <style>#}
+{#        body {#}
+{#            background: url('{% static "city_images/Other/home_page.jpg" %}') no-repeat center center fixed;#}
+{#            background-size: cover;#}
+{#            font-family: 'Roboto', sans-serif;#}
+{#            color: white;#}
+{#        }#}
+{#        .overlay {#}
+{#            position: fixed;#}
+{#            width: 100%;#}
+{#            height: 100%;#}
+{#            background-color: rgba(0, 0, 0, 0.6); /* Bardziej przezroczyste tło */#}
+{#            z-index: 1;#}
+{#        }#}
+{#        .content {#}
+{#            z-index: 2;#}
+{#            position: relative;#}
+{#        }#}
+{#        .navbar {#}
+{#            background-color: transparent;#}
+{#        }#}
+{#        .navbar-brand, .nav-link {#}
+{#            color: white !important;#}
+{#        }#}
+{#        .btn-custom {#}
+{#            background-color: #746855;#}
+{#            color: white;#}
+{#        }#}
+{#        .btn-custom:hover {#}
+{#            background-color: #5a4c3c;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#    <div class="overlay"></div> <!-- Overlay for dimmed background image -->#}
+{##}
+{#    <div class="content">#}
+{#        <!-- NavBar -->#}
+{#        <nav class="navbar navbar-expand-lg navbar-dark">#}
+{#            <div class="container-fluid">#}
+{#                {% if user.is_authenticated %}#}
+{#                    <a class="navbar-brand" href="#">Welcome {{ user.username }}!</a>#}
+{#                {% endif %}#}
+{#                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">#}
+{#                    <span class="navbar-toggler-icon"></span>#}
+{#                </button>#}
+{#                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">#}
+{#                    <ul class="navbar-nav">#}
+{#                        <li class="nav-item">#}
+{#                            {% if user.is_authenticated %}#}
+{#                                <a href="{% url 'travel_list' %}" class="btn btn-custom btn-sm">My Travels</a>#}
+{#                                <a href="{% url 'logout' %}" class="btn btn-secondary btn-sm">Logout</a>#}
+{#                            {% else %}#}
+{#                                <a href="{% url 'travel_list' %}" class="btn btn-custom btn-sm">My Travels</a>#}
+{#                                <a href="{% url 'login' %}" class="btn btn-secondary btn-sm">Login</a>#}
+{#                            {% endif %}#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </nav>#}
+{##}
+{#        <!-- Main Content -->#}
+{#        <div class="container mt-4">#}
+{#            <h1>Welcome to TravelApp!</h1>#}
+{#            <!-- More content here -->#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <!-- Bootstrap JavaScript Bundle with Popper -->#}
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TravelApp - Explore the World</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: url('{% static "city_images/Other/home_page.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .content {
+            z-index: 2;
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar {
+            background-color: transparent;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .btn-custom {
+            background-color: #746855;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #5a4c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Welcome to TravelApp!</h1>
+        {% if user.is_authenticated %}
+            <a href="{% url 'travel_list' %}" class="btn btn-custom btn-lg">My Travels</a>
+            <a href="{% url 'logout' %}" class="btn btn-custom btn-lg">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-custom btn-lg">Sign in</a>
+            <a href="{% url 'login' %}" class="btn btn-custom btn-lg">Sign up</a>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

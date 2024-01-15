@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Tasks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <style>
+        body {
+            background: url('{% static "city_images/Other/home_page.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+        }
+        h1, .navbar-brand, .nav-link {
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar {
+            background-color: transparent;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .btn-custom {
+            background-color: #746855;
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #5a4c3c;
+            color: white;
+        }
+        .tasks-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .list-group-item {
+            background-color: #d3c1a5;
+            color: #333;
+            background-color: transparent;
+            /* Pozostałe style dla .list-group-item... */
+        }
+        .list-group-item:hover {
+            background-color: #bbaa94;
+        }
+
+        .col-md-3xs {
+            margin-bottom: 15px;
+            width: 30rem;
+        }
+        .task-actions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .task-actions a {
+            margin-left: 5px;
+        }
+        .task-actions a:first-child {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            {% if user.is_authenticated %}
+                <a class="navbar-brand" href="#">{{ user.username }}</a>
+            {% endif %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'home_page' %}" class="btn btn-custom btn-sm">Home</a>
+                            <a href="{% url 'show_details' travel.id %}" class="btn btn-custom btn-sm">Go Back</a>
+                            <a href="{% url 'logout' %}" class="btn btn-custom btn-sm">Logout</a>
+                        {% else %}
+                            <a href="{% url 'home_page' %}" class="btn btn-custom btn-sm">Home</a>
+                            <a href="{% url 'login' %}" class="btn btn-custom btn-sm">Login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Kontener zadań -->
+    <div class="tasks-container">
+        <h2>Tasks List <a href="{% url 'add_task' travel.id %}" class="btn btn-custom btn-sm">Add Task</a></h2>
+        <div class="row">
+            {% for task in tasks %}
+                <div class="col-md-3"> <!-- 4 kolumny w rzędzie -->
+                    <div class="list-group-item rounded" id="task-{{ task.id }}"> <!-- Dodano klasę 'rounded' -->
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="mb-1">{{ task.title }}</h5>
+                                <small>{{ task.description }}</small>
+                            </div>
+                            <div class="task-actions">
+                                <a href="{% url 'edit_task' task.id %}" class="btn btn-custom btn-sm">Edit</a>
+                                <a href="{% url 'delete_task' task.id %}" class="btn btn-custom btn-sm">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 %}
+                    </div><div class="row"> <!-- Nowy rząd po każdych 4 taskach -->
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
