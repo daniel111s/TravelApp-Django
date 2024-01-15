@@ -8,9 +8,13 @@ Home page, login, create a new account:
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/c36c15a5-087b-4bb2-a8d6-1d3d56cac1be">
 
 
+
+
 After pressing the "Sign in" button, the user is asked to log in:
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/119b13f4-5a33-479f-8b1e-fe76b3963a5b">
+
+
 
 
 After logging in, the "My Travels" page is displayed, which shows the trips the user has entered into the system:
@@ -30,6 +34,8 @@ There are also three buttons at the bottom of each card:
 - Details - clicking on which redirects you to a page with detailed information about the trip.
 
 
+
+
 After pressing the "Details" button:
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/4524a701-4bb4-4fe1-ab1f-16ce7499dfb2">
@@ -43,12 +49,16 @@ Several cards have appeared:
 - To Do List - allows you to create a list of tasks to do
 
 
+
+
 Weather Information:
 
 <img width="653" alt="Zrzut ekranu 2024-01-15 o 22 31 58" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/8210e8c9-d399-481b-9f39-ec5e88c9a2c2">
 
 
 Weather forecast in a particular location for the days covered by the trip. Note that for distant dates the weather forecast may not be effective. It works best as a short-term one. It is made in the form of a bootstrap "carousel", that is, every few seconds the weather illustration for a given day moves and the forecast for the next day takes its place. No need to manually scroll through the days.
+
+
 
 
 City map:
@@ -59,9 +69,11 @@ A map of the city in question is also presented. It can be zoomed in, zoomed out
 
 
 
+
 Pressing "Gallery of photos":
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/347a16c4-1f22-4050-b405-d0c3f19a47bd">
+
 
 
 
@@ -73,15 +85,22 @@ Pressing "Places to visit":
 Famous tourist places in Rome are displayed along with their address. If the user finds that he wants more information like opening hours, ticket prices, etc. He or she can press the "Go to Google Maps" button, which will redirect him or her to the relevant page of the place on Google. 
 
 
+
+
 An example of how "Go to Google Maps" works for the Roman Forum:
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/80e7d3fa-f901-4a43-bef4-9c96d4197b31">
 
 
+
+
 Pressing „Recommended hotels”:
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/95b957b2-6520-40a7-8370-eacc01ef643d">
+
 An analogous action to "Places to visit."
+
+
 
 
 An example of a Google page redirect for the Hiberia Rome hotel:
@@ -89,15 +108,21 @@ An example of a Google page redirect for the Hiberia Rome hotel:
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/e92b1d37-bd47-419b-8506-afd137ee6941">
 
 
+
+
 Pressing „Recommended Restaurants” :
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/276d7934-e6d9-44aa-87df-67a24888cbe4">
+
 Analogiczne działanie, jak w przypadku „Places to visit”.
+
+
 
 
 Pressing „To Do List”:
 
 <img width="454" alt="image" src="https://github.com/daniel111s/PJF-Project-Siara/assets/126720512/a6019433-fcdf-490d-a397-0259ad58625f">
+
 Tasks to do, previously entered by the user, are displayed.
 The user can delete, edit or add a new task.
 This site definitely needs front-end improvement :)
